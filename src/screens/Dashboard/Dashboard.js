@@ -1,5 +1,6 @@
 import React from 'react';
-import galaxy from '../../images/galaxy.svg';
+import Galaxy from '../../components/Map/Galaxy'
+import Button from '../../components/Commands/Button'
 import './Dashboard.css';
 
 function Dashboard() {
@@ -7,34 +8,16 @@ function Dashboard() {
     <div className="dashboard">
         <div className="lcars-top">
           <div className="button-holder">
-            <div className="lcars-button button-1">HELIDON HOTSPOT</div>
-            <div className="lcars-button button-2">HELIDON GRAALVM</div>
-            <div className="lcars-button button-3">PARALLEL</div>
+            <Button style="button-1" text="HELIDON HOTSPOT"></Button>
+            <Button style="button-2" text="HELIDON GRAALVM"></Button>
+            <Button style="button-3" text="PARALLEL"></Button>
           </div>
           <div className="extender-x-1"></div>
           <div className="extender-x-2"></div>
         </div>
         <div className="lcars-down">
           <div className="extender-y"></div>
-          <div className="galaxy">
-            <div className="galaxy-map">
-              <div className="grid">
-                <div className="element grid-x"></div>
-                <div className="element grid-x"></div>
-                <div className="element grid-x"></div>
-                <div className="element grid-x"></div>
-                <div className="element grid-x"></div>
-              </div>
-              <div className="grid">
-                <div className="element grid-y"></div>
-                <div className="element grid-y"></div>
-                <div className="element grid-y"></div>
-                <div className="element grid-y"></div>
-                <div className="element grid-y"></div>
-              </div>
-              <img src={galaxy}></img>
-            </div>
-          </div>
+            <Galaxy></Galaxy>
         </div>
     </div>
   );

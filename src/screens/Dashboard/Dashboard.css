@@ -47,34 +47,6 @@
   margin-left: 150px;
 }
 
-.lcars-button {
-  width: 200px;
-  height: 40px;
-  float: right;
-  margin: 5px;
-  padding-top: 5px;
-  border-radius: 30px;
-  text-align: center;
-  font-size: 1.7em;
-  cursor: pointer;
-}
-
-.lcars-button:hover {
-  color: #fff;
-}
-
-.lcars-button.button-1 {
-  background-color: #cc99cc;
-}
-
-.lcars-button.button-2 {
-  background-color: #ff9900;
-}
-
-.lcars-button.button-3 {
-  background-color: #ffcc99;
-}
-
 .lcars-down {
   height: 100%;
   background-color: #262626;
@@ -90,60 +62,4 @@
   position: absolute;
   top: 680px;
   left: 5px;
-}
-
-.galaxy {
-  height: 100%;
-  padding: 0 0 0 138px;
-  overflow: hidden;
-}
-
-.galaxy-map {
-  height: 100%;
-  background-image: url(../../images/galaxy.svg);
-  margin: 250px 20px 0 20px;
-  position: relative;
-}
-
-.galaxy-map img {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-
-.grid {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-
-.grid .element {
-  float: left;
-}
-
-.grid .element.grid-x {
-  width: 100%;
-  height: 20%;
-  background-image: url(../../images/grid-x.svg);
-  background-repeat: repeat-x;
-}
-
-.grid .element.grid-x:first-child {
-  background: none;
-}
-
-.grid .element.grid-y {
-  width: 20%;
-  height: 100%;
-  background-image: url(../../images/grid-y.svg);
-  background-repeat: repeat-y;
-}
-
-.grid .element.grid-y:first-child {
-  background: none;
 }
