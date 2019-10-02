@@ -1,72 +1,40 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Galaxy.css'
 
 class Galaxy extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            trajecories: []
-        }
+    componentWillMount(nextProp) {
     }
 
-    componentWillMount() {
-    }
-
-    componentDidMount() {
-        var starRef1 = document.getElementById('star1');
-        var starRef2 = document.getElementById('star2');
-        var starRef3 = document.getElementById('star3');
-        var starRef4 = document.getElementById('star4');
-        var starRef5 = document.getElementById('star5');
-        var starRef6 = document.getElementById('star6');
-        var starRef7 = document.getElementById('star7');
-        var starRef8 = document.getElementById('star8');
-        var starRef9 = document.getElementById('star9');
-        var starRef10 = document.getElementById('star10');
-        var starRef11 = document.getElementById('star11');
-
-        var star1 = { x: starRef1.getAttribute("cx") ,y: starRef1.getAttribute("cy") };
-        var star2 = { x: starRef2.getAttribute("cx") ,y: starRef2.getAttribute("cy") };
-        var star3 = { x: starRef3.getAttribute("cx") ,y: starRef3.getAttribute("cy") };
-        var star4 = { x: starRef4.getAttribute("cx") ,y: starRef4.getAttribute("cy") };
-        var star5 = { x: starRef5.getAttribute("cx") ,y: starRef5.getAttribute("cy") };
-        var star6 = { x: starRef6.getAttribute("cx") ,y: starRef6.getAttribute("cy") };
-        var star7 = { x: starRef7.getAttribute("cx") ,y: starRef7.getAttribute("cy") };
-        var star8 = { x: starRef8.getAttribute("cx") ,y: starRef8.getAttribute("cy") };
-        var star9 = { x: starRef9.getAttribute("cx") ,y: starRef9.getAttribute("cy") };
-        var star10 = { x: starRef10.getAttribute("cx") ,y: starRef10.getAttribute("cy") };
-        var star11 = { x: starRef11.getAttribute("cx") ,y: starRef11.getAttribute("cy") };
-
-        var trajecories = this.state.trajecories;
-        trajecories.push({ 'starStart': star1, 'starEnd': star2 });
-        trajecories.push({ 'starStart': star1, 'starEnd': star2 });
-        trajecories.push({ 'starStart': star2, 'starEnd': star3 });
-        trajecories.push({ 'starStart': star3, 'starEnd': star4 });
-        trajecories.push({ 'starStart': star4, 'starEnd': star5 });
-        trajecories.push({ 'starStart': star5, 'starEnd': star6 });
-        trajecories.push({ 'starStart': star6, 'starEnd': star7 });
-        trajecories.push({ 'starStart': star7, 'starEnd': star8 });
-        trajecories.push({ 'starStart': star8, 'starEnd': star9 });
-        trajecories.push({ 'starStart': star9, 'starEnd': star10 });
-        trajecories.push({ 'starStart': star10, 'starEnd': star11 });
-
-        this.setState({'trajecories': trajecories});
+    createTrajectoryLine(starStartId, starEndId, colour, id, offset) {
+        var starStart = document.getElementById(starStartId);
+        var starEnd = document.getElementById(starEndId);
+        var startX = (Number(starStart.getAttribute("cx")) + Number(offset));
+        var startY = Number(starStart.getAttribute("cy"));
+        var endX = (Number(starEnd.getAttribute("cx")) + Number(offset));
+        var endY = Number(starEnd.getAttribute("cy"));
+        return (<line key={id}
+            x1={startX} 
+            y1={startY} 
+            x2={endX} 
+            y2={endY} 
+            style={{'stroke': colour,'strokeWidth': 2}} />)
     }
 
     render() {
-        var lines = [];
-        if (this.state.trajecories && this.state.trajecories.length > 0)
-        {
-            for (var i = 0; i < this.state.trajecories.length; i++) {
-                lines.push(
-                <line 
-                    x1={this.state.trajecories ? this.state.trajecories[i].starStart.x : null} 
-                    y1={this.state.trajecories ? this.state.trajecories[i].starStart.y : null} 
-                    x2={this.state.trajecories ? this.state.trajecories[i].starEnd.x : null} 
-                    y2={this.state.trajecories ? this.state.trajecories[i].starEnd.y : null} 
-                    style={{'stroke':'#ffffff','strokeWidth':1.5}} />
-                );
+        var linesHotspot = [];
+        var linesGraal = [];
+
+        if (this.props.trajectoriesHotspot && this.props.trajectoriesHotspot.length > 0) {
+            for (var i = 0; i < this.props.trajectoriesHotspot.length; i++) {
+                linesHotspot.push(this.createTrajectoryLine(this.props.trajectoriesHotspot[i].starStart, this.props.trajectoriesHotspot[i].starEnd, '#9999ff', 'hotspot' + i, 2.0));
+            }
+        }
+
+        if (this.props.trajectoriesGraal && this.props.trajectoriesGraal.length > 0) {
+            for (i = 0; i < this.props.trajectoriesGraal.length; i++) {
+                linesGraal.push(this.createTrajectoryLine(this.props.trajectoriesGraal[i].starStart, this.props.trajectoriesGraal[i].starEnd, '#ff9900', 'graal' + i, -2.0));
             }
         }
 
@@ -90,7 +58,8 @@ class Galaxy extends Component {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1000">
                 <g id="group" fill="none" fillRule="evenodd">
                 <rect width="100%" height="100%" fill="#262626"></rect>
-                    {lines}
+                    {linesHotspot}
+                    {linesGraal}
                     <circle cx="676.7672874773058" cy="597.1612764655976" r="3.0788920676038387" fill="#FFFFFF" fillOpacity="0.4443456812210784"></circle>
                     <circle cx="550.9048189247725" cy="1908.641154624277" r="2.2492889685502178" fill="#FFFFFF" fillOpacity="0.34770630157730875"></circle>
                     <circle cx="1905.714954547502" cy="793.5792947879014" r="0.27192093837681997" fill="#FFFFFF" fillOpacity="0.18006828925712481"></circle>
@@ -699,5 +668,11 @@ class Galaxy extends Component {
         );
     }
 }
+
+Galaxy.propTypes = {
+    style: PropTypes.string,
+    trajectoriesHotspot: PropTypes.array,
+    trajectoriesGraal: PropTypes.array
+};
 
 export default Galaxy;

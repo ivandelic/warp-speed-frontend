@@ -47,6 +47,13 @@
   margin-left: 150px;
 }
 
+.stats-holder {
+  position: absolute;
+  bottom: 15px;
+  right: left;
+  margin-left: 150px;
+}
+
 .lcars-down {
   height: 100%;
   background-color: #262626;
