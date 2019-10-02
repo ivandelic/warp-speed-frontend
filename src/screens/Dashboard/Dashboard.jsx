@@ -131,17 +131,17 @@ class Dashboard extends Component {
   }
 
   activateHotspotTraverse() {
-    this.setState({trajectoriesHotspot: [], trajectoriesGraal: []});
+    this.setState({trajectoriesHotspot: [], totalPlanetsHotspot: 0});
     this.traverseUniverseHotspot();
   }
 
   activateGraalTraverse() {
-    this.setState({trajectoriesHotspot: [], trajectoriesGraal: []});
+    this.setState({trajectoriesGraal: [], totalPlanetsGraal: 0});
     this.traverseUniverseGraal();
   }
 
   activateParallelTraverse() {
-    this.setState({trajectoriesHotspot: [], trajectoriesGraal: []});
+    this.setState({trajectoriesHotspot: [], trajectoriesGraal: [], totalPlanetsGraal: 0, totalPlanetsHotspot: 0});
     this.traverseUniverseHotspot();
     this.traverseUniverseGraal();
   }
