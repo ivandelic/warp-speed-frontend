@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: warp-speed-frontend
-        image: ${DOCKER_REGISTRY}/${DOCKER_REPO_FRONTEND}:1.0
+        image: ${DOCKER_REGISTRY}/${DOCKER_REPO_FRONTEND}:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
