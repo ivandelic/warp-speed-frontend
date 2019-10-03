@@ -1,3 +1,5 @@
+box: node:latest
+
 docker-build-and-push:
    steps:
    - internal/docker-build:
