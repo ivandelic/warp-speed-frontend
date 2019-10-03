@@ -1,0 +1,34 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: warp-speed-frontend
+  labels:
+    app: warp-speed-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: warp-speed-frontend
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: http
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: warp-speed-frontend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: warp-speed-frontend
+        version: v1
+    spec:
+      containers:
+      - name: warp-speed-frontend
+        image: ${DOCKER_REGISTRY}/${DOCKER_REPO_FRONTEND}:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+---
