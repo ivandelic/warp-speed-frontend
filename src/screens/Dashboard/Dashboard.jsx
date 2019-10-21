@@ -151,7 +151,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <div className="lcars-top">
           <div className="button-holder">
-            <Button onClickHandler={this.activateHotspotTraverse.bind(this)} style="button-1" text="HELIDON HOTSPOT"></Button>
+            <Button onClickHandler={this.activateHotspotTraverse.bind(this)} style="button-1" text="HELIDON HOTSPOT2"></Button>
             <Button onClickHandler={this.activateGraalTraverse.bind(this)} style="button-2" text="HELIDON GRAALVM"></Button>
             <Button onClickHandler={this.activateParallelTraverse.bind(this)} style="button-3" text="PARALLEL"></Button>
           </div>
