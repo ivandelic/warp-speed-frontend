@@ -11,8 +11,8 @@ class Dashboard extends Component {
     this.state = {
       trajectoriesHotspot: [],
       trajectoriesGraal: [],
-      searchEngineAddressGraal: 'http://132.145.242.121/universe/traverse',
-      searchEngineAddressHotspot: 'http://130.61.12.48/universe/traverse',
+      searchEngineAddressGraal: 'http://warp-service-graal.micro.ivandelic.com/universe/traverse',
+      searchEngineAddressHotspot: 'http://warp-service-hotspot.micro.ivandelic.com/universe/traverse',
       timeStartGraal: 0,
       timeStartHotspot: 0,
       timeFinishGraal: 0,
