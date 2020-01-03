@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: warp-speed-frontend
-        image: ${DOCKER_REGISTRY}/${DOCKER_REPO_FRONTEND}:latest
+        image: 'eu-frankfurt-1.ocir.io/oraseemeaceeociworkshop/ivandelic/warp/warp-speed-frontend:latest'
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
